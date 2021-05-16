@@ -1,7 +1,6 @@
 <style>
     @import './assets/styles/fonts.css';
     @import './assets/styles/toastr.css';
-    @import './assets/styles/keyboard.css';
     @import './assets/styles/misc.css';
     @import './assets/styles/scrollbar.css';
 
@@ -21,16 +20,15 @@
 
 <template>
     <v-app>
-        <vue-headful title="PI-Streaming" />
+        <vue-headful title="MC-Dockerized" />
         <v-navigation-drawer
             class="sidebar-wrapper" disable-resize-watcher persistent v-model="drawer" fixed app
             color="#181818DD"
-            
         >
             <div id="nav-header">
                 <img :src="require('./assets/logo.svg')" />
                 <v-toolbar-title>
-                    PI-Streaming <p class="mb-0 text-body-2 pl-0 pb-2" style="font-size: 11px!important;line-height: 2px;">v{{ getVersion }}</p>
+                    MC-Dockerized <p class="mb-0 text-body-2 pl-0 pb-2" style="font-size: 11px!important;line-height: 2px;">v{{ getVersion }}</p>
                 </v-toolbar-title>
             </div>
             <ul class="navi" :expand="$vuetify.breakpoint.mdAndUp">
@@ -50,21 +48,18 @@
             </ul>
             <template v-slot:append>
                 <div class="pa-2" align="center">
-                    <v-btn fab elevation="0" small href="https://github.com/eliteSchwein/pistreaming" target="_blank">
+                    <v-btn fab elevation="0" small href="https://github.com/eliteSchwein/mc-dockerized" target="_blank">
                         <v-icon>mdi-github</v-icon>
                     </v-btn>
                 </div>
             </template>
         </v-navigation-drawer>
 
-        
         <v-app-bar app elevate-on-scroll color="#181818DD">
-            
             <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         </v-app-bar>
 
         <v-main id="content" v-bind:style="{backgroundImage:'url('+require('@/assets/background.jpg')+')',backgroundAttachment:'fixed',backgroundSize: 'cover',backgroundRepeat: 'no-repeat'}">
-            
             <v-scroll-y-transition>
                 <v-container fluid id="page-container" class="container px-sm-6 px-3 mx-auto">
                     <keep-alive>
@@ -77,9 +72,10 @@
 </template>
 
 <script>
-    import axios from "axios";
-    import routes from './routes'
-    import { mapState, mapGetters } from 'vuex';
+import axios from "axios";
+import { mapState, mapGetters } from 'vuex';
+
+import routes from './routes'
 
 export default {
     props: {
@@ -95,13 +91,13 @@ export default {
     }),
     created () {
         this.$vuetify.theme.dark = true;
-        var handler = this;
-        axios.get( handler.$store.state.config.ipaddress+'/getconfig/', {})
-        .then(function (response) {
-            var data = response.data
+        const handler = this;
+        axios.get( `${handler.$store.state.config.ipaddress}/getconfig/`, {})
+        .then((response) => {
+            const {data} = response
             handler.$store.state.config.data=data
         })
-        .catch(function (error) {
+        .catch((error) => {
             console.log(error);
         });
     },
@@ -113,7 +109,7 @@ export default {
             'getTitle',
             'getVersion'
         ]),
-        currentPage: function() {
+        currentPage() {
           return this.$route.fullPath;
         },
     },
@@ -122,20 +118,20 @@ export default {
     },
     methods: {
         drawFavicon(val) {
-            let favicon16 = document.querySelector("link[rel*='icon'][sizes='16x16']")
-            let favicon32 = document.querySelector("link[rel*='icon'][sizes='32x32']")
+            const favicon16 = document.querySelector("link[rel*='icon'][sizes='16x16']")
+            const favicon32 = document.querySelector("link[rel*='icon'][sizes='32x32']")
 
             if (val > 0 && val < 100) {
-                let faviconSize = 64;
+                const faviconSize = 64;
 
-                let canvas = document.createElement('canvas');
+                const canvas = document.createElement('canvas');
                 canvas.width = faviconSize;
                 canvas.height = faviconSize;
-                let context = canvas.getContext('2d');
-                let centerX = canvas.width / 2;
-                let centerY = canvas.height / 2;
-                let radius = 32;
-                let percent = val * 100;
+                const context = canvas.getContext('2d');
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                const radius = 32;
+                const percent = val * 100;
 
                 /* draw the grey circle */
                 context.beginPath();
@@ -148,13 +144,13 @@ export default {
                 context.stroke();
 
                 /* draw the green circle based on percentage */
-                let startAngle = 1.5 * Math.PI;
+                const startAngle = 1.5 * Math.PI;
                 let endAngle = 0;
-                let unitValue = (Math.PI - 0.5 * Math.PI) / 25;
-                if (percent >= 0 && percent <= 25) endAngle = startAngle + (percent * unitValue);
-                else if (percent > 25 && percent <= 50) endAngle = startAngle + (percent * unitValue);
-                else if (percent > 50 && percent <= 75) endAngle = startAngle + (percent * unitValue);
-                else if (percent > 75 && percent <= 100) endAngle = startAngle + (percent * unitValue);
+                const unitValue = (Math.PI - 0.5 * Math.PI) / 25;
+                if (percent >= 0 && percent <= 25) {endAngle = startAngle + (percent * unitValue);}
+                else if (percent > 25 && percent <= 50) {endAngle = startAngle + (percent * unitValue);}
+                else if (percent > 50 && percent <= 75) {endAngle = startAngle + (percent * unitValue);}
+                else if (percent > 75 && percent <= 100) {endAngle = startAngle + (percent * unitValue);}
 
                 context.beginPath();
                 context.moveTo(centerX, centerY);

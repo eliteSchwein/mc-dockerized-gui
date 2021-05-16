@@ -89,8 +89,8 @@
                         this.$store.dispatch('config/setSettings', { data: { digitalGain: 0 }});
                         return this.$store.dispatch('config/setSettings', { data: { analogGain: 0 }});
                     }
-                    this.$store.dispatch('config/setSettings', { data: { digitalGain: 1.0 }});
-                    return this.$store.dispatch('config/setSettings', { data: { analogGain: 1.0 }});
+                    this.$store.dispatch('config/setSettings', { data: { digitalGain: 1 }});
+                    return this.$store.dispatch('config/setSettings', { data: { analogGain: 1 }});
                 }
             },
             digital: {

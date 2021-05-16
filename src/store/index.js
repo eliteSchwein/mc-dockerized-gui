@@ -1,10 +1,11 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
 import VueToast from 'vue-toast-notification';
+import Vuex from 'vuex'
+
 import actions from './actions'
-import mutations from './mutations'
-import getters from './getters'
 import config from './config'
+import getters from './getters'
+import mutations from './mutations'
 
 Vue.use(Vuex);
 Vue.use(VueToast);
@@ -16,7 +17,7 @@ export default new Vuex.Store({
     modules: {
         config
     },
-    getters: getters,
-    mutations: mutations,
-    actions: actions
+    getters,
+    mutations,
+    actions
 });

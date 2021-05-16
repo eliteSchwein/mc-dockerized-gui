@@ -50,33 +50,33 @@
                 bitrateItems: [
                     {
                         text:"25MBit",
-                        value: 25000000
+                        value: 25_000_000
                     },
                     {
                         text:"20MBit",
-                        value: 20000000
+                        value: 20_000_000
                     },
                     {
                         text:"15MBit",
-                        value: 15000000
+                        value: 15_000_000
                     },
                     {
                         text:"10MBit",
-                        value: 10000000
+                        value: 10_000_000
                     },
                     {
                         text:"5MBit",
-                        value: 5000000
+                        value: 5_000_000
                     },
                     {
                         text:"1MBit",
-                        value: 1000000
+                        value: 1_000_000
                     }
                 ],
                 bitrateRules: [ 
                     v => !!v || "This field is required",
                     v => ( v && v >= 0 ) || "Min is 0" ,
-                    v => ( v && v <= 25000000 ) || "Max is 25000000",
+                    v => ( v && v <= 25_000_000 ) || "Max is 25000000",
                 ],
             }
         },

@@ -14,13 +14,13 @@ export default {
 	},
 
 	upload({ state }) {
-		var data = state.data
-		let file = new File([JSON.stringify({ data })], 'config.json');
+		const {data} = state
+		const file = new File([JSON.stringify({ data })], 'config.json');
 
-		let formData = new FormData();
+		const formData = new FormData();
 		formData.append('file', file);
 
-		axios.post(state.ipaddress+'/setconfig',
+		axios.post(`${state.ipaddress}/setconfig`,
 			data, {
 				headers: { 'Content-Type': 'application/json' }
 			}

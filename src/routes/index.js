@@ -1,28 +1,14 @@
 import Dashboard from '../pages/Dashboard.vue'
-import Stream from '../pages/Stream.vue'
-import Snapshot from '../pages/Snapshot.vue'
 import Settings from '../pages/Settings.vue'
+import Snapshot from '../pages/Snapshot.vue'
+import Stream from '../pages/Stream.vue'
 
 const routes = [
     {
         title: "Dashboard",
         path: '/',
-        icon: 'monitor-dashboard',
+        icon: 'view-dashboard-variant',
         component: Dashboard,
-        alwaysShow: true,
-    },
-    {
-        title: "Stream",
-        path: '/stream-example',
-        icon: 'video',
-        component: Stream,
-        alwaysShow: true,
-    },
-    {
-        title: "Snapshot",
-        path: '/snapshot-example',
-        icon: 'camera',
-        component: Snapshot,
         alwaysShow: true,
     },
     {

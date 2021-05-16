@@ -2,11 +2,11 @@
     <v-card>
         <v-toolbar flat dense>
             <v-toolbar-title>
-                <span class="subheading"><v-icon left>mdi-webcam</v-icon>Stream</span>
+                <span class="subheading"><v-icon left>mdi-chart-donut</v-icon>Disk Usage</span>
             </v-toolbar-title>
         </v-toolbar>
         <v-card-text class="px-0 py-0 content">
-            <img :src="this.$store.state.config.ipaddress+'/stream'" width="100%">
+            Soon
         </v-card-text>
     </v-card>
 </template>

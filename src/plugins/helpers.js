@@ -1,23 +1,23 @@
 export function findDirectory (folder, dirArray) {
-    if (folder !== undefined && dirArray.length) {
-        if (folder.childrens) folder = folder.childrens;
+    if (folder !== undefined && dirArray.length > 0) {
+        if (folder.childrens) {folder = folder.childrens;}
 
-        let parent = folder.find(element => (element.isDirectory && element.filename === dirArray[0]));
+        const parent = folder.find(element => (element.isDirectory && element.filename === dirArray[0]));
         if (parent) {
             dirArray.shift();
-            if (dirArray.length) {
+            if (dirArray.length > 0) {
                 return findDirectory(parent, dirArray);
-            } else return parent.childrens;
-        } else return folder;
+            } return parent.childrens;
+        } return folder;
     }
 }
 
 export function caseInsensitiveNameSort(a, b) {
-    let nameA = a.name.toUpperCase();
-    let nameB = b.name.toUpperCase();
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase();
 
-    if (nameA < nameB) return -1;
-    if (nameA > nameB) return 1;
+    if (nameA < nameB) {return -1;}
+    if (nameA > nameB) {return 1;}
 
     return 0;
 }
